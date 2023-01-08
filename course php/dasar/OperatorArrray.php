@@ -1,9 +1,9 @@
 <?php
-$first=[
- "first_name" => "daud",
+$first = [
+    "first_name" => "daud",
 
-] ;
-$last=[
+];
+$last = [
     "first_name" => "bintang",
     "last_name" => "rahmatullah"
 ];
@@ -17,7 +17,7 @@ $a = [
 ];
 
 $b = [
-     "first_name" => "bintang",
+    "first_name" => "bintang",
     "last_name" => "rahmatullah"
 ];
 var_dump($a == $b);
