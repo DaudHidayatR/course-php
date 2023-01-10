@@ -1,7 +1,10 @@
 <?php
-
+require_once __DIR__ . "./../view/viewRemoveTodoList.php";
+require_once __DIR__ . "./../view/viewAddTodoList.php";
 require_once __DIR__ . "./../BusinessLogic/ShowTodoList.php";
 require_once __DIR__ . "./../helper/input.php";
+require_once __DIR__ . "./../models/TodoList.php";
+
 function viewTodoList()
 {
     while (true) {
@@ -13,13 +16,13 @@ function viewTodoList()
 
         $pilihan = input("pilih");
         if ($pilihan == "1") {
-            viewAddTodoList();
+            // ViewAddTodoList();
         } else if ($pilihan == "2") {
-            viewRemoveTodoList();
+            // ViewRemoveTodoList();
         } else if ($pilihan == "x") {
             break;
         } else {
-            echo "pilihan anda salah, sialahkan masukaan ulang" . PHP_EOL;
+            echo "pilihan anda salah, silahkan masukaan ulang" . PHP_EOL;
         }
     }
     echo "sampai jumpa lagi".PHP_EOL;
