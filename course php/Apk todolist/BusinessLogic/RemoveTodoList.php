@@ -7,7 +7,7 @@ function removeTodoLIst(int $number)
     if ($number > sizeof($todoList)) {
         return false;
     }
-    for ($i = 0; $i < sizeof($todoList); $i++) {
+    for ($i = $number; $i < sizeof($todoList); $i++) {
         $todoList[$i] = $todoList[$i + 1];
     }
     unset($todoList[sizeof($todoList)]);
