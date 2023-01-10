@@ -1,7 +1,7 @@
 <?php
 // menghapus todolist
 
-function removeTodoLIst(int $number)
+function removeTodoList(int $number)
 {
     global $todoList;
     if ($number > sizeof($todoList)) {
