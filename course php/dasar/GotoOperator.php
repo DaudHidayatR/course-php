@@ -1,7 +1,7 @@
 <?php
 goto a;
-echo "hello world";
 
+// echo "hello world";
 a:
 echo "hello A";
 
