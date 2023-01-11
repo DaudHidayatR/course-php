@@ -1,7 +1,7 @@
 <?php
 class person
 {
-    const AUTHOR = "daud hidayat ramdahan";
+    const AUTHOR = "daud hidayat ramadhan";
     var string $name;
     var ?string $address = null;
     var string $country = "indonesia";
@@ -13,5 +13,8 @@ class person
         }else{
             echo "Hi $name , myname is $this->name". PHP_EOL;
         }
+    }
+    function info (){
+        echo "AUTHOR : " . self::AUTHOR . PHP_EOL;
     }
 }
