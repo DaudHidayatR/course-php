@@ -1,5 +1,9 @@
 <?php
 require_once "data/person.php";
-$person1 = new Person();
+$daud = new Person();
+$daud-> name = 'daud';
+$daud->sayHello("");
 
-$person1->sayHello("daud");
+$siraj = new person();
+$siraj->name = 'siraj';
+$siraj-> sayHello("");
