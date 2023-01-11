@@ -21,4 +21,8 @@ class person
     function info (){
         echo "AUTHOR : " . self::AUTHOR . PHP_EOL;
     }
+    function __destruct()
+    {
+        echo "object person $this->name is destroyed" . PHP_EOL;
+    }
 }
