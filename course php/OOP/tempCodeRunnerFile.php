@@ -1,0 +1,2 @@
+<?php
+$data = new rectangle();
