@@ -16,9 +16,9 @@ function viewTodoList()
 
         $pilihan = input("pilih");
         if ($pilihan == "1") {
-            // ViewAddTodoList();
+            ViewAddTodoList();
         } else if ($pilihan == "2") {
-            // ViewRemoveTodoList();
+            ViewRemoveTodoList();
         } else if ($pilihan == "x") {
             break;
         } else {
