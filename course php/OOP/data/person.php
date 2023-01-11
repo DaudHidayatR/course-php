@@ -1,6 +1,7 @@
 <?php
 class person
 {
+    const AUTHOR = "daud hidayat ramdahan";
     var string $name;
     var ?string $address = null;
     var string $country = "indonesia";
