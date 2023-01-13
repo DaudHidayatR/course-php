@@ -46,12 +46,15 @@ class parentPerson
     }
 
 }
+trait ALL{
+    use sayGoodbye, sayHello, HasName, CanRun {
+    // hello as private;
+    // goodBye as private;
+    }
+}
 class person extends parentPerson
 {
-    use sayGoodbye, sayHello, HasName, CanRun {
-        // hello as private;
-        // goodBye as private;
-    }
+    use ALL;
     public function run(): void
     {
         echo "person $this->name is running" . PHP_EOL;
