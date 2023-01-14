@@ -1,2 +1,0 @@
-<?php
-$zero->firstName = "daud";

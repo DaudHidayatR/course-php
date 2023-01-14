@@ -29,7 +29,7 @@ class Zero
         $join = join(",", $arguments);
         echo "callstatic function $name with arguments: " . $join . PHP_EOL;
     }
-    
+
 }
 
 $zero = new Zero();
