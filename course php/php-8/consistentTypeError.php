@@ -1,4 +1,4 @@
 <?php
-strlen([]);
+// strlen([]);
 ?>
 
