@@ -7,12 +7,12 @@ namespace Repository{
         function findAll(): array;
     }
     class TodolistRepositorImpl implements TodolistRepository{
-        private array $todolist = array();
+        public array $todolist = array();
         function save(Todolist $todolist): void{
 
         }
         function remove(int $number): bool{
-            return true;
+            return false;;
         }
         function findAll(): array{
             return $this->todolist;
