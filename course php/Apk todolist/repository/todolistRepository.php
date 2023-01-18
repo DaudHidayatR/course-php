@@ -6,4 +6,16 @@ namespace Repository{
         function remove(int $number): bool;
         function findAll(): array;
     }
+    class TodolistRepositorImpl implements TodolistRepository{
+        private array $todolist = array();
+        function save(Todolist $todolist): void{
+
+        }
+        function remove(int $number): bool{
+            return true;
+        }
+        function findAll(): array{
+            return $this->todolist;
+        }
+    }
 }
