@@ -31,6 +31,25 @@ function testAddTodolist(): void
     $todolistService->AddTodolist("kipli");
     $todolistService->showTodolist();
 }
+
+
+function testRemoveTodolist(): void
+{
+
+    $todolistRepository = new TodolistRepositorImpl();
+    $todolistService = new TodolistServiceImpl($todolistRepository);
+    $todolistService->AddTodolist("daud");
+    $todolistService->AddTodolist("siraj");
+    $todolistService->AddTodolist("juan");
+    $todolistService->AddTodolist("bintang");
+    $todolistService->AddTodolist("Zahwa");
+    $todolistService->AddTodolist("kipli");
+    $todolistService->showTodolist();
+
+    $todolistService->removeTodolist("1");
+    $todolistService->showTodolist();
+}
 testShowTodolist();
 testAddTodolist();
+testRemoveTodolist();
 ?>
