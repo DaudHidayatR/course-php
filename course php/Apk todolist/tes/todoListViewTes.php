@@ -24,7 +24,26 @@ use \View\TodolistView;
 // }
 // testViewShowTodoList();
 
-function testViewAddTodoList()
+// function testViewAddTodoList()
+// {
+//     $todolistRepository = new TodolistRepositorImpl();
+//     $todolistService = new TodolistServiceImpl($todolistRepository);
+//     $todolistView = new TodolistView($todolistService);
+//     $todolistService->addTodolist("Daud");
+//     $todolistService->addTodolist("Siraj");
+//     $todolistService->addTodolist("Juan");
+//     $todolistService->addTodolist("Bintang");
+//     $todolistService->addTodolist("kharisma");
+//     $todolistService->addTodolist("sista");
+//     $todolistService->showTodolist();
+//     $todolistView->addTodolist();
+//     $todolistService->showTodolist();
+//     $todolistView->addTodolist();
+//     $todolistService->showTodolist();
+
+// }
+// testViewAddTodoList();
+function testViewRemoveTodoList()
 {
     $todolistRepository = new TodolistRepositorImpl();
     $todolistService = new TodolistServiceImpl($todolistRepository);
@@ -36,11 +55,9 @@ function testViewAddTodoList()
     $todolistService->addTodolist("kharisma");
     $todolistService->addTodolist("sista");
     $todolistService->showTodolist();
-    $todolistView->addTodolist();
+    $todolistView->removeTodolist();
     $todolistService->showTodolist();
-    $todolistView->addTodolist();
-    $todolistService->showTodolist();
-
+    
 }
-testViewAddTodoList();
+testViewRemoveTodoList();
 ?>
