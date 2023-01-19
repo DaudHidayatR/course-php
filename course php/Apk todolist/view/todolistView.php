@@ -32,7 +32,13 @@ use Helper\InputHelper;
             }
             echo "sampai jumpa lagi" . PHP_EOL;
         }function addTodolist(): void{
-
+            echo "MENAMBAHKAN TODO" . PHP_EOL;
+            $todo = inputHelper::input("todo (x untuk batal)");
+            if ($todo === "x") {
+                echo "batal menambahkan Todo" . PHP_EOL;
+            } else {
+                $this->todolistService->addTodolist($todo);
+            }
         }
         function removeTodolist(): void
         {
