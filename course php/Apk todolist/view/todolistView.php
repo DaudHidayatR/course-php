@@ -42,7 +42,15 @@ use Helper\InputHelper;
         }
         function removeTodolist(): void
         {
-            
+            echo "MENGHAPUS TODO" . PHP_EOL;
+
+            $pilihan = inputHelper::input("nomor (x untuk membatalkan)");
+
+            if ($pilihan === "x") {
+                echo "batal menghapus todo" . PHP_EOL;
+            } else {
+                $this->todolistService->removeTodolist($pilihan);
+            }
         }
     }
 }
