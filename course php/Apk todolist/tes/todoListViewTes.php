@@ -8,7 +8,23 @@ use Service\TodolistServiceImpl;
 use Repository\TodolistRepositorImpl;
 use Entity\Todolist;
 use \View\TodolistView;
-function testViewShowTodoList()
+// function testViewShowTodoList()
+// {
+//     $todolistRepository = new TodolistRepositorImpl();
+//     $todolistService = new TodolistServiceImpl($todolistRepository);
+//     $todolistView = new TodolistView($todolistService);
+//     $todolistService->addTodolist("Daud");
+//     $todolistService->addTodolist("Siraj");
+//     $todolistService->addTodolist("Juan");
+//     $todolistService->addTodolist("Bintang");
+//     $todolistService->addTodolist("kharisma");
+//     $todolistService->addTodolist("sista");
+//     $todolistView->showTodolist();
+
+// }
+// testViewShowTodoList();
+
+function testViewAddTodoList()
 {
     $todolistRepository = new TodolistRepositorImpl();
     $todolistService = new TodolistServiceImpl($todolistRepository);
@@ -19,8 +35,12 @@ function testViewShowTodoList()
     $todolistService->addTodolist("Bintang");
     $todolistService->addTodolist("kharisma");
     $todolistService->addTodolist("sista");
-    $todolistView->showTodolist();
+    $todolistService->showTodolist();
+    $todolistView->addTodolist();
+    $todolistService->showTodolist();
+    $todolistView->addTodolist();
+    $todolistService->showTodolist();
 
 }
-testViewShowTodoList();
+testViewAddTodoList();
 ?>
