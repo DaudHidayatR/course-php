@@ -5,7 +5,7 @@ require_once __DIR__ . "./../repository/todolistRepository.php";
 
 use Service\TodolistServiceImpl;
 use Repository\TodolistRepositorImpl ;
-use \Entity\Todolist;
+use Entity\Todolist;
 function testShowTodolist():void
 {
 

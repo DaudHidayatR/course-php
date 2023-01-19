@@ -2,10 +2,14 @@
 namespace View{
 use Entity\Todolist;
 use Service\TodolistService;
-    use Helper\InputHelper;
+use Helper\InputHelper;
     class TodoLIstView
     {
         private TodolistService $todolistService;
+
+        public function __construct(TodolistService $todolistService){
+            $this->todolistService = $todolistService;
+        }
         function showTodolist(): void
         {
             while (true) {
