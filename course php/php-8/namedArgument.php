@@ -5,6 +5,6 @@ function sayHello(string $first, string $middle =" ", string $last):void{
 }
 SayHello("daud","hidayat","ramadhan");
 
-sayHello(last: "daud",first:"hidayat",middle:"ramadhan");
+// sayHello(last: "daud",first:"hidayat",middle:"ramadhan");
 
 // SayHello(first: "daud", last: "hidayat");
