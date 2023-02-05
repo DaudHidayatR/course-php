@@ -1,18 +1,32 @@
 <?php
-namespace Repository{
+namespace Repository {
     use Entity\Todolist;
-    interface TodolistRepository{
+
+    interface TodolistRepository
+    {
         function save(Todolist $todolist): void;
         function remove(int $number): bool;
         function findAll(): array;
     }
-    class TodolistRepositorImpl implements TodolistRepository{
+    class TodolistRepositorImpl implements TodolistRepository
+    {
         public array $todolist = array();
-        function save(Todolist $todolist): void{
-            $number = sizeof($this->todolist) + 1;
-            $this->todolist[$number] = $todolist;
+
+        private \PDO $conn;
+        public function __construct(\PDO $conn)
+        {
+            $this->conn = $conn;
         }
-        function remove(int $number): bool{
+        function save(Todolist $todolist): void
+        {
+            // $number = sizeof($this->todolist) + 1;
+            // $this->todolist[$number] = $todolist;
+            $sql = "Insert into todolist (todo) VALUES (?)";
+            $statement = $this->conn->prepare($sql);
+            $statement->execute([$todolist->getTodo()]);
+        }
+        function remove(int $number): bool
+        {
             if ($number > sizeof($this->todolist)) {
                 return false;
             }
@@ -22,7 +36,8 @@ namespace Repository{
             unset($this->todolist[sizeof($this->todolist)]);
             return true;
         }
-        function findAll(): array{
+        function findAll(): array
+        {
             return $this->todolist;
         }
     }
