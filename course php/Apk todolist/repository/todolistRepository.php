@@ -40,7 +40,7 @@ namespace Repository {
             $statement->execute([$number]);
 
             if ($statement->fetch()) {
-                $sql = "DELETE FROM todolists WHERE id = ?";
+                $sql = "DELETE FROM todolist WHERE id = ?";
                 $statement = $this->conn->prepare($sql);
                 $statement->execute([$number]);
                 return true;
