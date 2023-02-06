@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__. "./../Service/todolistService.php";
-require_once __DIR__ ."./../Entity/todoList.php";
-require_once __DIR__ . "./../repository/todolistRepository.php";
+require_once __DIR__ . "/../Entity/todolist.php";
+require_once __DIR__ . "/../repository/todolistRepository.php";
+require_once __DIR__ . "/../Service/todolistService.php";
+require_once __DIR__ . "/../config/database.php";
 
 use Service\TodolistServiceImpl;
 use Repository\TodolistRepositorImpl ;
@@ -20,8 +21,8 @@ function testShowTodolist():void
 }
 function testAddTodolist(): void
 {
-
-    $todolistRepository = new TodolistRepositorImpl();
+    $conn = \Config\Database::getConnection();
+    $todolistRepository = new TodolistRepositorImpl($conn);
     $todolistService = new TodolistServiceImpl($todolistRepository);
     $todolistService->AddTodolist("daud");
     $todolistService->AddTodolist("siraj");
@@ -29,7 +30,7 @@ function testAddTodolist(): void
     $todolistService->AddTodolist("bintang");
     $todolistService->AddTodolist("Zahwa");
     $todolistService->AddTodolist("kipli");
-    $todolistService->showTodolist();
+    // $todolistService->showTodolist();
 }
 
 
@@ -48,8 +49,8 @@ function testRemoveTodolist(): void
 
     $todolistService->removeTodolist("1");
     $todolistService->showTodolist();
-}
-testShowTodolist();
+} 
+// testShowTodolist();
 testAddTodolist();
-testRemoveTodolist();
+// testRemoveTodolist();
 ?>
