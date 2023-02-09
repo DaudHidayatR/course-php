@@ -1,0 +1,17 @@
+{
+    "name": "daud/belajar-php-composer",
+    "description": "Belajar PHP Composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Daud\\BelajarPhpComposer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DaudHidayatRamadhan",
+            "email": "daud28ramadhan@gmail.com"
+        }
+    ],
+    "require": {}
+}
