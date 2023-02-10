@@ -13,5 +13,7 @@
             "email": "daud28ramadhan@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "monolog/monolog": "3.3.1"
+    }
 }
