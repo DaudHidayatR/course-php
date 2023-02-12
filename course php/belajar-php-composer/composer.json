@@ -17,5 +17,9 @@
         "php": ">=8.0",
         "daudhidayatramadhan/belajar-php-composer-hello": "2.0.0",
         "monolog/monolog": "3.3.1"
+    },
+    "scripts": {
+        "jalankan-server": "php -S localhost:8080",
+        "hello" : "echo Hello World"
     }
 }
