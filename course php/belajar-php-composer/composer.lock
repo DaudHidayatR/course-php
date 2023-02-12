@@ -4,8 +4,44 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5efc7e5a875bbfd6aa8533c2d945ce1",
+    "content-hash": "ecc66215e10587614bb2d757d75ae8ab",
     "packages": [
+        {
+            "name": "daudhidayatramadhan/belajar-php-composer-hello",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DaudHidayatR/belajar-php-composer-hello.git",
+                "reference": "52290983db8e65b39b26a868cd49fa60eb997752"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DaudHidayatR/belajar-php-composer-hello/zipball/52290983db8e65b39b26a868cd49fa60eb997752",
+                "reference": "52290983db8e65b39b26a868cd49fa60eb997752",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Daudhidayatramadhan\\Belajar\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "DaudHidayatRamadhan",
+                    "email": "daud28ramadhan@gmail.com"
+                }
+            ],
+            "description": "Library",
+            "support": {
+                "source": "https://github.com/DaudHidayatR/belajar-php-composer-hello/tree/1.0.1",
+                "issues": "https://github.com/DaudHidayatR/belajar-php-composer-hello/issues"
+            },
+            "time": "2023-02-12T13:18:09+00:00"
+        },
         {
             "name": "monolog/monolog",
             "version": "3.3.1",
@@ -164,7 +200,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=8.0"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
 }
