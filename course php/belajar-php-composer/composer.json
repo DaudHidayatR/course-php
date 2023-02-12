@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": ">=8.0",
-        "daudhidayatramadhan/belajar-php-composer-hello": "1.0.1",
+        "daudhidayatramadhan/belajar-php-composer-hello": "2.0.0",
         "monolog/monolog": "3.3.1"
     }
 }
