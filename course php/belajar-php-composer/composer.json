@@ -13,12 +13,6 @@
             "email": "daud28ramadhan@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/DaudHidayatR/belajar-php-composer-hello.git"
-        }
-    ],
     "require": {
         "php": ">=8.0",
         "daudhidayatramadhan/belajar-php-composer-hello": "2.0.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45ee664fb33c5fdc3ce8ef9a08f20e87",
+    "content-hash": "2a7062a7798d71b89214d940a51075fd",
     "packages": [
         {
             "name": "daudhidayatramadhan/belajar-php-composer-hello",
@@ -29,6 +29,7 @@
                     "Daudhidayatramadhan\\Belajar\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "DaudHidayatRamadhan",
@@ -37,8 +38,8 @@
             ],
             "description": "Library",
             "support": {
-                "source": "https://github.com/DaudHidayatR/belajar-php-composer-hello/tree/2.0.0",
-                "issues": "https://github.com/DaudHidayatR/belajar-php-composer-hello/issues"
+                "issues": "https://github.com/DaudHidayatR/belajar-php-composer-hello/issues",
+                "source": "https://github.com/DaudHidayatR/belajar-php-composer-hello/tree/2.0.0"
             },
             "time": "2023-02-12T14:21:41+00:00"
         },
