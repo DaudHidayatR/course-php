@@ -12,4 +12,13 @@ Class CounterTest extends TestCase
         $counter->increment();
         $this->assertEquals(1, $counter->getCounter());
     }
+
+    /**
+     * @test
+     */
+    public function  increment(){
+        $counter = new counter();
+        $counter->increment();
+        $this->assertEquals(1, $counter->getCounter());
+    }
 }
