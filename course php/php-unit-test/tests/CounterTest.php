@@ -1,6 +1,7 @@
 <?php
 namespace Daudhidayatramadhan\BelajarPhpUnitTest;
 
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
 Class CounterTest extends TestCase
@@ -9,6 +10,6 @@ Class CounterTest extends TestCase
     {
         $counter = new counter();
         $counter->increment();
-        echo $counter->getCounter();
+        $this->assertEquals(1, $counter->getCounter());
     }
 }
