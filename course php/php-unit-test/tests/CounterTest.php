@@ -12,6 +12,12 @@ Class CounterTest extends TestCase
         $this->counter = new Counter();
 
     }
+    public  function testIncrement(){
+        self::assertEquals(0,$this->counter->getCounter());
+        self::markTestIncomplete("Todo do Counter again");
+//        echo "Test test".PHP_EOL;
+
+    }
 
     public function  testCounter()
     {
