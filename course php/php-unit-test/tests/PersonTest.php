@@ -6,23 +6,33 @@ use PHPUnit\Framework\TestCase;
 
 class PersonTest extends TestCase
 {
+    private Person $person;
+
+    protected  function setUp(): void
+    {
+
+    }
+
+    /**
+     * @before
+     */
+    public function createPerson()
+    {
+    $this->person = new person('daud');
+    }
     public function testSuccess()
     {
-        $person = new Person("daud");
-        $this->assertEquals("hello budi, Myname is daud", $person->sayHello("budi"));
+        $this->assertEquals("hello budi, Myname is daud", $this->person->sayHello("budi"));
     }
     public  function testException()
     {
-        $person = new Person("daud");
         $this->expectException(\Exception::class);
-        $person->sayHello(null);
+        $this->person->sayHello(null);
     }
     public function testGoodByeSuccess()
     {
-        $person = new Person("daud");
         $this->expectOutputString("Good bye Budi" . PHP_EOL );
-        $person->sayGoodBye('Budi');
-
+        $this->person->sayGoodBye('Budi');
     }
 
 }
