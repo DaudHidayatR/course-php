@@ -14,4 +14,12 @@ class ProductService
         }
         return $this->repository->save($product);
     }
+    public function detele(string $id): void
+    {
+        $product = $this->repository->findId($id);
+        if ($product == null){
+            throw new \Exception('Product is Not Found');
+        }
+        $this->repository->delete($product);
+    }
 }

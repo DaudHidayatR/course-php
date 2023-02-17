@@ -6,7 +6,7 @@ interface ProductRepository
 {
     function save(Product $product): Product;
 
-    function delete(Product $product): void;
+    function delete(?Product $product): void;
     function  findId(string $id): ?Product;
 
     function findAll(): array;

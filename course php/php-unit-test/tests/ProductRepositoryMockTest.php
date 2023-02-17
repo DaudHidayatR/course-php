@@ -5,14 +5,14 @@ namespace Daudhidayatramadhan\BelajarPhpUnitTest;
 use phpDocumentor\Reflection\Types\Self_;
 use PHPUnit\Framework\TestCase;
 
-class ProductRepositoryTest extends TestCase
+class ProductRepositoryMockTest extends TestCase
 {
     private productRepository $repository;
     private ProductService $service;
 
     protected function setUp(): void
     {
-       $this->repository = $this->createStub(ProductRepository::class);
+       $this->repository = $this->createMock(ProductRepository::class);
        $this->service = new ProductService($this->repository);
     }
     public function testStub()
@@ -83,15 +83,39 @@ class ProductRepositoryTest extends TestCase
         $product = new Product();
         $product->setId('1');
 
-        $this->repository->method('findId')->willReturn($product);
+        $this->repository->expects(self::once())
+            ->method('delete')
+            ->with(self::equalTo($product));
 
-        $this ->service->detele('i');
+        $this->repository->expects(self::once())
+            -> method('findId')
+            ->willReturn($product)->
+            with(self::equalTo('1'));
+
+        $this ->service->detele('1');
         self::assertTrue(true, 'Success Delete');
     }
     public function testDeleteException()
     {
+        $this->repository->expects(self::never())
+            ->method('delete');
         $this->expectException(\Exception::class);
-        $this->repository->method('delete');
+        $this->repository->expects(self::once())
+        ->method('findId')
+        ->willReturn(null)
+        ->with(self::equalTo('1'));
         $this->service->detele('1');
+    }
+    public function testMock(){
+
+        $product = new Product();
+        $product->setId('1');
+
+        $this->repository->expects(self::once())
+            ->method('findId')
+            ->willReturn($product);
+
+        $result = $this->repository->findId('1');
+        self::assertSame($product,$result);
     }
 }
