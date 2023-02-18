@@ -1,6 +1,9 @@
 <?php
-$path = '/index';
-if ((isset($_SERVER['PATH_INFO']))){
-    $path = $_SERVER['PATH_INFO'];
-}
-require  __DIR__ . '/../app/View' . $path .'.php';
+require_once __DIR__. '/../vendor/autoload.php';
+
+use Daudhidayatramadhan\BelajarPhpMvc\App\Router;
+
+Router::add('GET', '/', 'HomeController', 'index');
+Router::add('GET', '/login', 'UseController', 'login');
+Router::add('GET', '/register', 'UseController', 'register');
+Router::run();
