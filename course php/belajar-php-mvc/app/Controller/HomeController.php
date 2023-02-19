@@ -36,6 +36,5 @@ class HomeController
         $response = [
             "messege" => "Login Suksses"
         ];
-
     }
 }
