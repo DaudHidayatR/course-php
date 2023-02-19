@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__. '/../vendor/autoload.php';
 
-
 use Daudhidayatramadhan\BelajarPhpMvc\App\Router;
 use Daudhidayatramadhan\BelajarPhpMvc\Controller\HomeController;
 use Daudhidayatramadhan\BelajarPhpMvc\Controller\ProductController;

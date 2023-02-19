@@ -5,6 +5,10 @@ class HomeController
 {
     function index(): void
     {
+        $model = [
+          "title" => "Belajar PHP MVC",
+            "content" => "Selamat Belajar PHP MVC dari Programer Zaman Now"
+        ];
         echo "HomeController.index()";
     }
 
@@ -19,5 +23,17 @@ class HomeController
     function about():void
     {
         echo "AUTHOR Daud Hidayat Ramdahan";
+    }
+    function login(): void
+    {
+        $request = [
+            "username" => $_POST['username'],
+            "password" => $_POST['password']
+        ];
+
+        $response = [
+            "messege" => "Login Suksses"
+        ];
+
     }
 }
