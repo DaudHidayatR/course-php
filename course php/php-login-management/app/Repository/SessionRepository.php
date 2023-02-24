@@ -16,7 +16,7 @@ class SessionRepository
     public function save(Session $session): Session
     {
         $statement = $this->connection->prepare("INSERT INTO sessions(id, user_id) VALUES (?, ?)");
-        $statement->execute($session->id, $session->userId);
+        $statement->execute([$session->id, $session->userId]);
         return $session;
     }
     public  function findById(string $id): ?Session
@@ -36,13 +36,14 @@ class SessionRepository
             $statement->closeCursor();
         }
     }
-    public function deleteId(string $id):void
+    public function deleteById(string $id):void
     {
         $statement = $this->connection->prepare("DELETE FROM sessions WHERE id = ?");
         $statement->execute([$id]);
     }
     public function deleteAll():void
     {
-        $this->connection->execute("DELETE FROM sessions");
+        $statement = $this->connection->prepare("DELETE FROM sessions");
+        $statement->execute();
     }
 }
