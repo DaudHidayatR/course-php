@@ -5,6 +5,7 @@ namespace Daudhidayatramadhan\LoginManagement\Controller;
 use Daudhidayatramadhan\LoginManagement\App\View;
 use Daudhidayatramadhan\LoginManagement\Config\Database;
 use Daudhidayatramadhan\LoginManagement\Exception\ValidationException;
+use Daudhidayatramadhan\LoginManagement\Model\UserLoginRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterRequest;
 use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
 use Daudhidayatramadhan\LoginManagement\Service\UserService;
@@ -40,7 +41,26 @@ class UserController
                 'error' => $e->getMessage()
             ]);
         }
-
-
+    }
+    public  function login()
+    {
+        View::render('User/login',[
+            'title' => 'User login'
+        ]);
+    }
+    public function PostLogin()
+    {
+        $request = new UserLoginRequest();
+        $request->id = $_POST['id'];
+        $request->password = $_POST['password'];
+        try {
+            $this->userService->login($request);
+            View::redirect('/');
+        }catch (ValidationException $e){
+            View::render('User/login',[
+                'title' => 'Login User',
+                'error' => $e->getMessage()
+            ]);
+        }
     }
 }
