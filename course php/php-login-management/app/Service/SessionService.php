@@ -26,7 +26,7 @@ class SessionService
         $session->userId = $userId;
 
         $this->sessionRepository->save($session);
-        setcookie(self::$COOKIE_NAME, $session->userId, time()+(60*60*24*30),"/" );
+        setcookie(self::$COOKIE_NAME, $session->id, time() + (60 * 60 *24 * 30),"/" );
         return $session;
     }
     public function destroy()
@@ -40,9 +40,9 @@ class SessionService
         $sessionId = $_COOKIE[self::$COOKIE_NAME] ?? '';
 
         $session = $this->sessionRepository->findById($sessionId);
-        if($session == null ){
+        if($session == null){
             return null;
         }
-        return $user = $this->userRepository->findById($sessionId->userId);
+        return $this->userRepository->findById($session->userId);
     }
 }
