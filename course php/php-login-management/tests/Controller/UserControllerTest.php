@@ -14,10 +14,12 @@ namespace  Daudhidayatramadhan\LoginManagement\Service{
 
 namespace Daudhidayatramadhan\LoginManagement\Controller{
     use Daudhidayatramadhan\LoginManagement\Config\Database;
+    use Daudhidayatramadhan\LoginManagement\Domain\Session;
     use Daudhidayatramadhan\LoginManagement\Domain\User;
     use Daudhidayatramadhan\LoginManagement\Exception\ValidationException;
     use Daudhidayatramadhan\LoginManagement\Repository\SessionRepository;
     use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
+    use Daudhidayatramadhan\LoginManagement\Service\SessionService;
     use Daudhidayatramadhan\LoginManagement\Service\UserService;
     use PHPUnit\Framework\TestCase;
 
@@ -152,6 +154,26 @@ namespace Daudhidayatramadhan\LoginManagement\Controller{
             $this->expectOutputRegex('[Login user]');
             $this->expectOutputRegex('[Id]');
             $this->expectOutputRegex('[Id or password is wrong]');
+        }
+        public function  testLogout()
+        {
+            $user = new User();
+            $user->id = 'daud';
+            $user->name = 'daud';
+            $user->password = password_hash('rahasia', PASSWORD_BCRYPT);
+            $this->userRepository->save($user);
+
+            $session = new Session();
+            $session->id = uniqid();
+            $session->userId = $user->id;
+            $this->sessionRepository->save($session);
+            $_COOKIE[SessionService::$COOKIE_NAME] = $session->id;
+
+            $this->userController->logout();
+            $this-> expectOutputRegex("[Location: /]");
+            $this->expectOutputRegex("[X-DHR-SESSION]");
+
+
         }
     }
 }
