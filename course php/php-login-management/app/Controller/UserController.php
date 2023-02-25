@@ -7,18 +7,24 @@ use Daudhidayatramadhan\LoginManagement\Config\Database;
 use Daudhidayatramadhan\LoginManagement\Exception\ValidationException;
 use Daudhidayatramadhan\LoginManagement\Model\UserLoginRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterRequest;
+use Daudhidayatramadhan\LoginManagement\Repository\SessionRepository;
 use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
+use Daudhidayatramadhan\LoginManagement\Service\SessionService;
 use Daudhidayatramadhan\LoginManagement\Service\UserService;
 
 class UserController
 {
     private UserService $userService;
+    private SessionService $sessionService;
 
     public function __construct()
     {
         $connection = Database::getConnection();
         $userRepository = new UserRepository($connection);
         $this->userService = new UserService($userRepository);
+
+        $sessionRepository = new SessionRepository($connection);
+        $this->sessionService = new SessionService($sessionRepository, $userRepository);
     }
 
     public function register(){
@@ -54,7 +60,9 @@ class UserController
         $request->id = $_POST['id'];
         $request->password = $_POST['password'];
         try {
-            $this->userService->login($request);
+            $response= $this->userService->login($request);
+
+            $this->sessionService->create($response->user->id);
             View::redirect('/');
         }catch (ValidationException $e){
             View::render('User/login',[
