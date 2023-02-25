@@ -6,24 +6,32 @@ namespace Daudhidayatramadhan\LoginManagement\App{
         echo $value;
     }
 }
-
-
-
+namespace  Daudhidayatramadhan\LoginManagement\Service{
+    function setcookie(string $name, $value) {
+        echo "$name: $value";
+    }
+}
 
 namespace Daudhidayatramadhan\LoginManagement\Controller{
     use Daudhidayatramadhan\LoginManagement\Config\Database;
     use Daudhidayatramadhan\LoginManagement\Domain\User;
     use Daudhidayatramadhan\LoginManagement\Exception\ValidationException;
+    use Daudhidayatramadhan\LoginManagement\Repository\SessionRepository;
     use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
     use Daudhidayatramadhan\LoginManagement\Service\UserService;
     use PHPUnit\Framework\TestCase;
+
     class UserControllerTest extends TestCase
     {
         private UserController $userController;
+        private SessionRepository $sessionRepository;
         private  UserRepository $userRepository;
         protected function setUp(): void
         {
+
             $this->userController = new UserController();
+            $this->sessionRepository = new SessionRepository(Database::getConnection());
+            $this->sessionRepository->deleteAll();
             $this->userRepository = new UserRepository(Database::getConnection());
             $this->userRepository->deleteAll();
 
@@ -104,6 +112,7 @@ namespace Daudhidayatramadhan\LoginManagement\Controller{
             $_POST['id'] = 'daud';
             $_POST['password'] = 'rahasia';
             $this->userController->postLogin();
+            $this->expectOutputRegex("[X-DHR-SESSION: daud]");
 
             $this->expectOutputRegex('[Location: /]');
         }
