@@ -82,7 +82,7 @@ class UserService
 
         }
     }
-    private function updateProfile(UserProfileUpdateRequest $request): UserProfileUpdateResponse
+    public function updateProfile(UserProfileUpdateRequest $request): UserProfileUpdateResponse
     {
         $this->validationUpdateProfile($request);
         try {
@@ -94,10 +94,10 @@ class UserService
                 throw new ValidationException("User is not found");
             }
             $user->name = $request->name;
-            $this->userRepository->save($user);
+            $this->userRepository->update($user);
             Database::commitTransaction();
 
-            $response = new UserRegisterResponse();
+            $response = new UserProfileUpdateResponse();
             $response->user = $user;
             return $response;
         }catch (\Exception $e){
