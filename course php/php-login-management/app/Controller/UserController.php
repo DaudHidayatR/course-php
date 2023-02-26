@@ -6,6 +6,7 @@ use Daudhidayatramadhan\LoginManagement\App\View;
 use Daudhidayatramadhan\LoginManagement\Config\Database;
 use Daudhidayatramadhan\LoginManagement\Exception\ValidationException;
 use Daudhidayatramadhan\LoginManagement\Model\UserLoginRequest;
+use Daudhidayatramadhan\LoginManagement\Model\UserProfileUpdateRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterRequest;
 use Daudhidayatramadhan\LoginManagement\Repository\SessionRepository;
 use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
@@ -75,5 +76,39 @@ class UserController
     {
     $this->sessionService->destroy();
     View::redirect("/");
+    }
+    public function updateProfile()
+    {
+        $user = $this->sessionService->current();
+        View::render("User/profile", [
+            "title" => "Update user profile",
+            "user" => [
+                "id"=> $user->id,
+                "name"=> $user->name
+                ]
+
+        ]);
+    }
+    public function postUpdateProfile()
+    {
+        $user = $this->sessionService->current();
+
+        $request = new UserProfileUpdateRequest();
+        $request->id = $user->id;
+        $request->name = $_POST['name'];
+
+        try {
+            $this->userService->updateProfile($request);
+            View::redirect('/');
+        }catch (ValidationException $e){
+            View::render("User/profile",[
+                'title' => 'Update user profile',
+                'error' => $e->getMessage(),
+                "user" => [
+                    "id"=> $user->id,
+                    "name"=> $_POST['name']
+                ]
+            ]);
+        }
     }
 }
