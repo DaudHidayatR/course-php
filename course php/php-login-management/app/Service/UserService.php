@@ -8,6 +8,8 @@ use Daudhidayatramadhan\LoginManagement\Domain\User;
 use Daudhidayatramadhan\LoginManagement\Exception\ValidationException;
 use Daudhidayatramadhan\LoginManagement\Model\UserLoginRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserLoginResponse;
+use Daudhidayatramadhan\LoginManagement\Model\UserProfileUpdateRequest;
+use Daudhidayatramadhan\LoginManagement\Model\UserProfileUpdateResponse;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterResponse;
 use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
@@ -77,6 +79,37 @@ class UserService
         if($request->id == null ||  $request->password == null ||
             trim($request->id )== "" || trim($request->password )== "" ){
             throw  new ValidationException('Id, Password Cannot blank');
+
+        }
+    }
+    private function updateProfile(UserProfileUpdateRequest $request): UserProfileUpdateResponse
+    {
+        $this->validationUpdateProfile($request);
+        try {
+            Database::beginTransaction();
+            $user = $this->userRepository->findById($request->id);
+
+            if ($user == null)
+            {
+                throw new ValidationException("User is not found");
+            }
+            $user->name = $request->name;
+            $this->userRepository->save($user);
+            Database::commitTransaction();
+
+            $response = new UserRegisterResponse();
+            $response->user = $user;
+            return $response;
+        }catch (\Exception $e){
+            Database::rollbackTransaction();
+            throw $e;
+        }
+    }
+    private function validationUpdateProfile(UserProfileUpdateRequest $request)
+    {
+        if($request->id == null ||  $request->name == null ||
+            trim($request->id )== "" || trim($request->name )== "" ){
+            throw  new ValidationException('Id, name Cannot blank');
 
         }
     }
