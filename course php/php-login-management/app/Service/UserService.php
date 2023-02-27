@@ -12,7 +12,10 @@ use Daudhidayatramadhan\LoginManagement\Model\UserProfileUpdateRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserProfileUpdateResponse;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterResponse;
+use Daudhidayatramadhan\LoginManagement\Model\UserUpdatePasswordRequest;
+use Daudhidayatramadhan\LoginManagement\Model\UserUpdatePasswordResponse;
 use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
+use PHPUnit\Exception;
 
 class UserService
 {
@@ -111,6 +114,38 @@ class UserService
             trim($request->id )== "" || trim($request->name )== "" ){
             throw  new ValidationException('Id, name Cannot blank');
 
+        }
+    }
+    public function updatePassword(UserUpdatePasswordRequest $request): UserUpdatePasswordResponse
+    {
+        $this->validationUserPasswordUpdateRequest($request);
+        try {
+            Database::beginTransaction();
+            $user = $this->userRepository->findById($request->id);
+
+            if ($user == null){
+                throw new ValidationException("User not found");
+            }
+            if (!password_verify($request->oldPassword, $user->password)){
+                throw new ValidationException("OLd Password is wrong");
+            }
+            $user->password = password_hash($request->newPassword, PASSWORD_BCRYPT);
+            $this->userRepository->update($user);
+
+            Database::commitTransaction();
+            $response = new UserUpdatePasswordResponse();
+            $response->user = $user;
+            return$response;
+        }catch (\Exception $e){
+            Database::rollbackTransaction();
+            throw $e;
+        }
+    }
+    public  function  validationUserPasswordUpdateRequest(UserUpdatePasswordRequest $request)
+    {
+        if($request->id == null ||  $request->oldPassword == null || $request->newPassword == null||
+            trim($request->id )== "" || trim($request->oldPassword )== ""||trim($request->newPassword )== "" ){
+            throw  new ValidationException('Id, old password, new password Cannot blank');
         }
     }
 }
