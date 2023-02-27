@@ -1,0 +1,29 @@
+{
+    "name": "daudhidayatramadhan/belajar-php-logger",
+    "description": "Belajar PHP Logger",
+    "type": "project",
+
+    "authors": [
+        {
+            "name": "DaudHidayatRamadhn",
+            "email": "daud28ramadhan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "monolog/monolog": "2.3.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.5.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Daudhidayatramadhan\\BelajarPhpLogger\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Daudhidayatramadhan\\BelajarPhpLogger\\": "tests/"
+        }
+    }
+}
