@@ -1,7 +1,7 @@
 <?php
 
 namespace Daudhidayatramadhan\LoginManagement\Service;
-
+require_once __DIR__."/../Helper/helper.php";
 use Daudhidayatramadhan\LoginManagement\Config\Database;
 use Daudhidayatramadhan\LoginManagement\Domain\Session;
 use Daudhidayatramadhan\LoginManagement\Domain\User;
@@ -9,9 +9,7 @@ use Daudhidayatramadhan\LoginManagement\Repository\SessionRepository;
 use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
 use PHPUnit\Framework\TestCase;
 
-function setcookie(string $name, $value) {
-    echo "$name: $value";
-}
+
 class SessionServiceTest extends TestCase
 {
     private SessionService $sessionService;

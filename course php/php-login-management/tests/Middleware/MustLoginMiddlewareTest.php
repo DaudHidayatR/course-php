@@ -1,13 +1,8 @@
 <?php
 
-namespace Daudhidayatramadhan\LoginManagement\App{
-    function header(string $value)
-    {
-        echo $value;
-    }
-}
-namespace Daudhidayatramadhan\LoginManagement\Middleware {
 
+namespace Daudhidayatramadhan\LoginManagement\Middleware {
+    require_once __DIR__."/../Helper/helper.php";
     use Daudhidayatramadhan\LoginManagement\Config\Database;
     use Daudhidayatramadhan\LoginManagement\Domain\Session;
     use Daudhidayatramadhan\LoginManagement\Domain\User;
