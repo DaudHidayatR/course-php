@@ -141,7 +141,7 @@ class UserService
             throw $e;
         }
     }
-    public  function  validationUserPasswordUpdateRequest(UserUpdatePasswordRequest $request)
+    private  function  validationUserPasswordUpdateRequest(UserUpdatePasswordRequest $request)
     {
         if($request->id == null ||  $request->oldPassword == null || $request->newPassword == null||
             trim($request->id )== "" || trim($request->oldPassword )== ""||trim($request->newPassword )== "" ){
