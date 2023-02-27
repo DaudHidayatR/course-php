@@ -8,6 +8,7 @@ use Daudhidayatramadhan\LoginManagement\Exception\ValidationException;
 use Daudhidayatramadhan\LoginManagement\Model\UserLoginRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserProfileUpdateRequest;
 use Daudhidayatramadhan\LoginManagement\Model\UserRegisterRequest;
+use Daudhidayatramadhan\LoginManagement\Model\UserUpdatePasswordRequest;
 use Daudhidayatramadhan\LoginManagement\Repository\SessionRepository;
 use Daudhidayatramadhan\LoginManagement\Repository\UserRepository;
 use Daudhidayatramadhan\LoginManagement\Service\SessionService;
@@ -106,7 +107,38 @@ class UserController
                 'error' => $e->getMessage(),
                 "user" => [
                     "id"=> $user->id,
-                    "name"=> $_POST['name']
+                ]
+            ]);
+        }
+    }
+    public function updatePassword()
+    {
+        $user = $this->sessionService->current();
+        View::render("user/password",[
+            'title' => 'Update user password',
+            "user" => [
+                "id"=> $user->id,
+                ]
+        ]);
+
+    }
+    public function postUpdatePassword()
+    {
+        $user = $this->sessionService->current();
+        $request = new UserUpdatePasswordRequest();
+        $request->id = $user->id;
+        $request->oldPassword = $_POST['oldPassword'];
+        $request->newPassword = $_POST['newPassword'];
+
+        try {
+            $this->userService->updatePassword($request);
+            View::redirect('/');
+        }catch (ValidationException $e){
+            View::render("User/password",[
+                'title' => 'Update user password',
+                'error' => $e->getMessage(),
+                "user" => [
+                    "id"=> $user->id,
                 ]
             ]);
         }
