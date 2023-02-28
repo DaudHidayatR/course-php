@@ -25,7 +25,5 @@ class LevelTest extends TestCase
         $logger->emergency("this is emergency");
 
         self::assertNotNull($logger);
-
     }
-
 }
