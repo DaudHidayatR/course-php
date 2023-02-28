@@ -1,0 +1,16 @@
+{
+  "message": "belajar PHP Logging lagi",
+  "context": {},
+  "level": 200,
+  "level_name": "INFO",
+  "channel": "Daudhidayatramadhan\\BelajarPhpLogger\\FormatterTest",
+  "datetime": "2023-02-28T19:06:13.908338+01:00",
+  "extra": {
+    "hostname": "SagAsh",
+    "memory_usage": "4 MB",
+    "git": {
+      "branch": "main",
+      "commit": "80d28aad3cf2a57e6c42df771a6e438fe2fd2cb6"
+    }
+  }
+}
