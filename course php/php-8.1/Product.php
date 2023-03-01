@@ -8,9 +8,12 @@ class Product
     {
     }
 }
-function sayHelloNew(Customer $customer = new Customer("0", "no name", Gender::Male)){
+function sayHelloNew(Customer $customer = new Customer("0", "no name", Gender::Male)): void
+{
 
 }
 var_dump(new Product());
 var_dump(new Product("ipad"));
 var_dump(new Product("ipad", new Category("1", "Gadget")));
+
+sayHelloNew();

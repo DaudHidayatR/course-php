@@ -3,12 +3,20 @@
 interface SayHello {
     function sayHello(): string;
 }
-
+trait  IndonesiaGender{
+    function  inIndonesia(): string{
+        return  match ( $this){
+            Gender::Male => "Tuan",
+            Gender::Female => "Nyonya",
+        };
+    }
+}
 enum Gender:string implements SayHello
 {
     case Male= "Mr. ";
     case Female = "Mrs. ";
 
+    const Unknown = "Unknown";
 
     static function fromIndonesia(string $value): Gender
     {
@@ -58,5 +66,5 @@ var_dump(Gender::cases());
 
 var_dump(Gender::Male->inIndonesia());
 
-var_dump(Gender::formIndonesia("Tuan"));
-var_dump(Gender::formIndonesia("Nyonya"));
+var_dump(Gender::fromIndonesia("Tuan"));
+var_dump(Gender::fromIndonesia("Nyonya"));

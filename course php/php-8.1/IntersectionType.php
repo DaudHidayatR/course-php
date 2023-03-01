@@ -4,13 +4,15 @@ interface HasBrand
 {
     function getBrand(): string;
 }
+
 interface HasName
 {
     function getName(): string;
 }
-class Car {
+
+class Car implements HasBrand , HasName {
     private string $brand;
-    private  string $name;
+    private string $name;
 
     public function __construct(string $brand, string $name)
     {
@@ -27,12 +29,12 @@ class Car {
     {
         return $this->name;
     }
-
 }
+
 function printBrandAndName(HasBrand & HasName $value)
 {
-    echo $value->getBrand(). "-". $value->getName(). PHP_EOL;
+    echo $value->getBrand() . "-" . $value->getName() . PHP_EOL;
 }
 
 printBrandAndName(new Car("Toyota", "Avanza"));
-printBrandAndName(new Car("Daihatsu", "Xenia"));
+printBrandAndName(new Car("Honda", "Mobilio"));
